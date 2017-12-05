@@ -4,89 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>分页</title>
     <link rel="stylesheet" type="text/css" href="./js/Semantic\semantic.min.css">
 </head>
-
-<body ng-app="myApp" ng-controller="myCtrl">
-    <h1 style="text-align:center">部门信息表</h1><br>
-  
-    <div style="padding:0 10%">
-    <!-- 关键字查询 -->  
-    <div class="ui icon input" width:"400px">
-        <input type="text" ng-model="controller.keyword" ng-keydown="controller.search($event)" placeholder="请输入关键字...">
-        <i class="search icon"></i>
+<body style="padding:50px 200px" ng-app="myApp">
+    <!-- 按钮 -->
+    <div class="ui attached steps">
+        <button class="step" ui-sref="111" ui-sref-active="active">
+                <!-- 添加ui-sref链接。点击后，链接将激活一个状态 -->
+                <!-- 前端用angularjs根据数据结构创建动态菜单，有二级菜单的一级菜单没有ui-sref-active="active"这个属性，只有一级菜单的才有 -->
+                <!-- 添加ui-sref-active="active"到ui-sref链接。active当目标状态处于活动状态时，该指令将把css类添加到链接中。 -->
+            <i class="truck icon"></i>
+            <div class="content">
+                <p class="title">公司首页</p>
+            </div>
+        </button>
+        <button class="step" ui-sref="222" ui-sref-active="active">
+            <i class="payment icon"></i>
+            <div class="content">
+                <p class="title">部门信息</p>
+            </div>
+        </button>
+        <button class="step"  ui-sref="333" ui-sref-active="active">
+            <i class="info icon"></i>   
+            <div class="content">
+                <p class="title">员工信息</p>
+            </div>           
+        </button>
     </div>
-    <!-- 增加信息 -->
-    <button class="ui circular icon button" ng-click="controller.add()">
-        <i class="plus icon"></i>
-    </button>
-    <br>
-    <!-- 表格信息 -->
-    <table class="ui single line table">
-        <thead>
-            <tr>
-                <th class="center aligned">部门编号</th>
-                <th class="center aligned">部门名称</th>
-                <th class="center aligned">负责人</th>
-                <th class="center aligned">员工数</th>
-                <th class="center aligned" width:"370px"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="x in controller.list track by x.Num">
-                <td class="center aligned">{{x.Num}}</td>
-                <td class="center aligned">{{x.Name}}</td>
-                <td class="center aligned">{{x.Person}}</td>
-                <td class="center aligned">{{x.All}}</td>
-                <td class="center aligned">
-                    <div class="ui buttons">
-                        <button class="ui positive button" ng-click="controller.modify($index)">修改</button>
-                        <div class="or">
-                            </div>
-                        <button class="ui button" ng-click="controller.delete($index)">删除</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table> 
-</div> 
-    <!-- 信息弹出框 -->
-    <div class="ui modal" id="info">
-        <i class="close icon"></i>
-        <div class="header">部门信息</div>
-        <div class="ui form description field" name="myForm" novalidate>
-            <br>
-            <div class=" field">
-                <label>部门编号</label>
-                <input type="text" ng-model="controller.info.Num" placeholder="Department Number" name="num">
-            </div>
-            <div class=" field">
-                <label>部门名称</label>
-                <input type="text" ng-model="controller.info.Name" placeholder="Department Name" name="name">
-            </div>
-            <div class="field">
-                <label>负责人</label>
-                <input type="text" ng-model="controller.info.Person" placeholder="Department Person" name="person">
-            </div>
-            <div class="field">
-                <label>员工数</label>
-                <input type="text" ng-model="controller.info.All" placeholder="Department All" name="all">
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui black deny button">取消</div>
-            <div class="ui right labeled icon button" ng-click="controller.save()">保存
-                <i class="checkmark icon"></i>
-            </div>
-            
-        </div>
-    </div>
+    <!-- ui-view标签是一个UI路由器视。当一个状态被激活时，状态的视图template: 会被加载到视图中 -->
+    <ui-view></ui-view>
 </body>
 </html>
+
+
+<!-- 必须要先加载angular.js，再加载angular-ui-router.js -->
+<script src="./js/angular.js"></script> 
+<script src="./js/angular-ui-router.js"></script>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 crossorigin="anonymous"></script>
-<script src="./js/angular.js"></script>
 <script src="./js/Semantic/semantic.min.js"></script>
-<script src="./js/Semantic/semantic.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/department.js"></script>
+</html>
+
+
+

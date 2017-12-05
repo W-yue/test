@@ -1,0 +1,73 @@
+
+<div class='ui attached segment' ng-controller="myCtrl" style="padding:30px">   
+    <div style="padding:0 10%">
+    <!-- 关键字查询 -->  
+    <div class="ui icon input" width:"400px">
+        <input type="text" ng-model="controller.keyword" ng-keydown="controller.search($event)" placeholder="请输入关键字...">
+        <i class="search icon"></i>
+    </div>
+    <!-- 增加信息 -->
+    <button class="ui circular icon button" ng-click="controller.add()">
+        <i class="plus icon"></i>
+    </button>
+    <br>
+    <!-- 表格信息 -->
+    <table class="ui single line table">
+        <thead>
+            <tr>
+                <th class="center aligned">部门编号</th>
+                <th class="center aligned">部门名称</th>
+                <th class="center aligned">负责人</th>
+                <th class="center aligned">员工数</th>
+                <th class="center aligned" width:"370px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in controller.list track by x.Num">
+                <td class="center aligned">{{x.Num}}</td>
+                <td class="center aligned">{{x.Name}}</td>
+                <td class="center aligned">{{x.Person}}</td>
+                <td class="center aligned">{{x.All}}</td>
+                <td class="center aligned">
+                    <div class="ui buttons">
+                        <button class="ui positive button" ng-click="controller.modify($index)">修改</button>
+                        <div class="or">
+                            </div>
+                        <button class="ui button" ng-click="controller.delete($index)">删除</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+</div> 
+    <!-- 信息弹出框 -->
+    <div class="ui modal" id="info" style="padding:10px 100px">
+        <i class="close icon"></i>
+        <div class="header">部门信息</div>
+        <div class="ui form description two fields" name="myForm" novalidate>
+            <br>           
+            <div class="field">
+                <label>部门编号</label>
+                <input type="text" ng-model="controller.info.Num" placeholder="Department Number" name="num">
+            </div>                
+            <div class="field">
+                  <label>部门名称</label>
+                <input type="text" ng-model="controller.info.Name" placeholder="Department Name" name="name">
+            </div>
+            <div class="field">
+                <label>负责人</label>
+                <input type="text" ng-model="controller.info.Person" placeholder="Department Person" name="person">
+            </div>
+            <div class="field">
+                <label>员工数</label>
+                <input type="text" ng-model="controller.info.All" placeholder="Department All" name="all">
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">取消</div>
+            <div class="ui right labeled icon button" ng-click="controller.save()">保存
+                <i class="checkmark icon"></i>
+            </div>          
+        </div>
+    </div>
+</div>

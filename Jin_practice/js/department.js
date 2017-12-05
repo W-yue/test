@@ -1,4 +1,28 @@
-var app = angular.module("myApp", []);
+var app = angular.module("myApp",['ui.router']);
+
+app.config(function($stateProvider){
+    var one = {
+        name:'111',
+        url:'/111',
+        template:"<div class='ui attached segment'><h3>公司首页</h3></div>"
+    }
+    var two = {
+        name:'222',
+        url:'/222',
+        templateUrl:"department.html"
+    }
+    var three = {
+        name:'333',
+        url:'/333',
+        template:"<div class='ui attached segment'><h3>员工信息</h3></div>"
+    }
+    // 用$stateProvider配置块注册三个状态，因为$stateProvider是一个Angular Provider，所以必须使用AngularJS依赖注入将它注入到一个.config()块中
+    $stateProvider.state(one);
+    $stateProvider.state(two);
+    $stateProvider.state(three);
+});
+
+
 app.controller("myCtrl", function ($scope, $http,$filter) { 
     $scope.controller = {
         //flag:false,
@@ -43,7 +67,7 @@ app.controller("myCtrl", function ($scope, $http,$filter) {
         modal:function(){
             $('#info')
             .modal({closable:false})
-             .modal("toggle");         
+            .modal("toggle");         
         },
         //添加
         add:function(){
@@ -52,14 +76,14 @@ app.controller("myCtrl", function ($scope, $http,$filter) {
         //修改
         modify:function($index){
             this.index = $index;
-            this.info = angular.copy($scope.names[$index]);
+            this.info = angular.copy(this.list[this.index]);
             this.modal();
         },
         //删除
         delete: function ($index) {
             this.index = $index;
             if (confirm("确定删除？")) {
-                $scope.names.splice(this.index, 1);
+                this.list.splice(this.index, 1);
             }
             this.index = null;
         },
@@ -73,7 +97,7 @@ app.controller("myCtrl", function ($scope, $http,$filter) {
                     count++;
                 }
                 if (count == 4) {
-                    $scope.names.push(this.info);
+                    this.list.push(this.info);
                     this.info = null;
                     this.modal();
                 }else{
@@ -82,7 +106,7 @@ app.controller("myCtrl", function ($scope, $http,$filter) {
                 count = 0;
             } else {
                 //修改信息
-                $scope.names[this.index] = this.info;
+                this.list[this.index] = this.info;
                 this.info = null;
                 this.index = null;
                 this.modal();
@@ -90,11 +114,9 @@ app.controller("myCtrl", function ($scope, $http,$filter) {
         }
     }
     $scope.controller.get();
-
-
-
-    
+  
 //     $scope.$watch("keyword",function (value) {
 //         $scope.search=$scope.keyword;
 //    }) 
+
 });
