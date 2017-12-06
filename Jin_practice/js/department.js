@@ -27,7 +27,16 @@ app.config(function($stateProvider,$controllerProvider){
     var one = {
         name:'111',
         url:'/111',
-        template:"<div class='ui attached segment'><h3>公司首页</h3></div>"
+        templateUrl:"company.html",
+        resolve:{
+            loadJs:function($q){
+                var defer =  $q.defer();
+                $script(["js/companyCtrl.js"],function(){
+                    defer.resolve();
+                });
+                return defer.promise;
+            } 
+        }
     }
     var two = {
         name:'222',
