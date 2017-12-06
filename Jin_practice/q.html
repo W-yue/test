@@ -7,24 +7,21 @@
     <title>$q</title>
 </head>
 <body>
-    <div ng-controller="myCtrl" ng-app="myApp">
-        {{test}}
-    </div>
+    <div ng-controller="myCtrl" ng-app="myApp">{{test}}</div>
     <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
     <script>
         var app = angular.module("myApp",[]);
         app.controller("myCtrl",function($scope,$q){
-            $scope.test = 1;
+            $scope.test = 1;//测试作用
             var defer = $q.defer(); //defer()创建一个deferred对象，defer.promise用于返回一个promise对象，来定义then方法，then中三个参数，分别是成功回调，失败回调，状态变更回调
             var promise = defer.promise;
-
             promise
             .then(function(value){
                 console.log("success");
                 console.log(value);
-            },function(value){
+            },function(reason){
                 console.log("error");
-                console.log(value);
+                console.log(reason);//拒绝派生的promise，并提供原因
             },function(value){
                 console.log("notify");
                 console.log(value);
@@ -39,6 +36,10 @@
             });
             defer.resolve("hello");//resolve中传入的变量或者函数返回结果，会当做第一个then方法的参数。then方法会返回一个promise对象
         });
+
+
+
+         
     </script>
 </body>
 </html>
