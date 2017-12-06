@@ -45,9 +45,19 @@ app.config(function($stateProvider,$controllerProvider){
         }
     }
     var three = {
-        name:'333',
-        url:'/333',
-        template:"<div class='ui attached segment'><h3>员工信息</h3></div>"
+        name: 'workers',
+        url: '/workers',
+        templateUrl: 'yeuser.html',
+        
+        resolve:{
+           loadJs:function($q){
+               var defer=$q.defer();
+               $script(["js/yeCtrl.js"],function(){
+                   defer.resolve();
+               });
+               return defer.promise;
+           }
+        }
     }
     // 用$stateProvider配置块注册三个状态，因为$stateProvider是一个Angular Provider，所以必须使用AngularJS依赖注入将它注入到一个.config()块中
     $stateProvider.state(one);
