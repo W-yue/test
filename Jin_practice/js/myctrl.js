@@ -54,6 +54,7 @@ app.register.controller("myCtrl", function ($scope, $http,$filter) {
                 this.index = $index;
                 this.info = angular.copy(this.list[this.index]);
                 this.modal();
+                console.log(1)
             },
             //删除
             delete: function ($index) {
@@ -82,6 +83,7 @@ app.register.controller("myCtrl", function ($scope, $http,$filter) {
                     count = 0;
                 } else {
                     //修改信息
+                    
                     this.list[this.index] = this.info;
                     this.info = null;
                     this.index = null;
