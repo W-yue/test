@@ -82,6 +82,7 @@ app.register.controller("myCtrl", function ($scope, $http,$filter) {
                     count = 0;
                 } else {
                     //修改信息
+                    
                     this.list[this.index] = this.info;
                     this.info = null;
                     this.index = null;

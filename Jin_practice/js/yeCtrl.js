@@ -121,9 +121,12 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
 
         //封装一个实现弹出框出现或者隐藏的函数
         modal:function(){
-            $('.ui.modal')
-            .modal({closable:false})
-            .modal('toggle');
+            $('#ye')
+            .modal({closable:false,onHidden:function(){
+               $("#yeCtrl").append($("#ye"));
+               $('.modals #ye').remove();
+            }})
+            .modal("toggle");
         },    
         add: function () {
             this.state = "add";
@@ -151,13 +154,13 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
             // $scope.$apply();
             // this.state == 'add' ? this.workers.push(this.info) : this.items[this.index] = this.info;
             this.modal();
-            this.info = {}
+            this.info = {};
 
         },
 
-        cancel: function () {
-            this.modal();
+        cancel: function () {    
             this.info = {};
+            this.modal();
 
         },
 
