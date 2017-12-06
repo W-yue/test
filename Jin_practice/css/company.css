@@ -1,0 +1,16 @@
+#table{
+    margin: 50px auto;
+    width: 1200px;
+}
+.sort{
+    color: #cac4c4;
+}
+.sort.ascending,.sort.descending{
+    color: rgb(92, 90, 90);
+}
+.pointer{
+    cursor: pointer;
+}
+.highLight{
+    background-color: yellow;
+}
