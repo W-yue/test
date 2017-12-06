@@ -3,8 +3,6 @@
 <!-- <div>{{title}}</div> -->
 <!-- <script src="./js/index.js"></script> -->
 <div ng-controller="yeCtrl" ng-init="user.init()">
-    <h1 class="ui large header" id="head">员工信息管理系统</h1>
-
     <!-- 增加信息 -->
     <div class="ui animated button" ng-click="user.add()">
         <div class="visible content">
@@ -89,8 +87,7 @@
     </table>
 
     <!-- 增加/修改 信息弹出框-->
-    <div class="ui modal">
-
+    <div class="ui modal" id="ye">
         <form class="ui form " name="myForm" required>
             <h4 class="ui dividing header">{{user.state=='add'?'添加':'修改'}}员工信息</h4>
 
@@ -146,8 +143,9 @@
                         请填写完整信息!!!</span>
                 </p>
             </div>
+        </form>
     </div>
-    </form>
+    
 </div>
 
 
