@@ -122,7 +122,10 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
         //封装一个实现弹出框出现或者隐藏的函数
         modal:function(){
             $('#ye')
-            .modal({closable:false})
+            .modal({closable:false,onHidden:function(){
+               $("#yeCtrl").append($("#ye"));
+               $('.modals #ye').remove();
+            }})
             .modal("toggle");
         },    
         add: function () {
