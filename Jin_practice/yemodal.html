@@ -1,0 +1,60 @@
+    <!-- 增加/修改 信息弹出框-->
+    <div class="ui modal" id="ye">
+        <i class="close icon"></i>
+        <form class="ui form " name="myForm" required>
+            <h4 class="ui dividing header">{{user.state=='add'?'添加':'修改'}}员工信息</h4>
+
+            <div class="fileds">
+                <div class="field">
+                    <div class="two fields">
+                        <div class="filed">
+                            <label>姓名：</label>
+                            <div class="field">
+                                <input ng-model="user.info.Name" type="text" name="nameInput" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>性别</label>
+                            <select class="ui search updown" ng-model="user.info.Sex" name="sexInput" required>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filed">
+                    <label>职务：</label>
+                    <input ng-model="user.info.Job" type="text" name="jobInput" required>
+                </div>
+                <br/>
+                <br/>
+                <div class="filed">
+                    <label>编号：</label>
+                    <input ng-model="user.info.Num" type="text" name="numInput" required>
+                </div>
+                <br/>
+                <br/>
+
+                <div class="field">
+                    <label>部门</label>
+                    <select class="ui search updown" ng-model="user.info.Dept" name="deptInput" required>
+                        <option value="信息部">信息部</option>
+                        <option value="销售部">销售部</option>
+                        <option value="技术部">技术部</option>
+                        <option value="产品部">产品部</option>
+                    </select>
+                </div>
+
+                <button class="ui primary positive  button" ng-click="user.save()" ng-disabled="myForm.nameInput.$invalid ||myForm.jobInput.$invalid||
+                                     myForm.numInput.$invalid||myForm.deptInput.$invalid||myForm.sexInput.$invalid">保存 </button>
+                <div class="ui button" ng-click="user.cancel()">取消 </div>
+                <br/>
+                <p>
+                    <span ng-show="myForm.nameInput.$invalid ||myForm.jobInput.$invalid||
+                    myForm.numInput.$invalid||myForm.deptInput.$invalid||myForm.sexInput.$invalid">
+                        请填写完整信息!!!</span>
+                </p>
+            </div>
+        </form>
+    </div>

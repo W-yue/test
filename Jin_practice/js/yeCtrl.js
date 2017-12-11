@@ -49,7 +49,7 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
             this.selPage = page;
             this.setData();
             //this.isActivePage(page);
-            console.log("选择的页：" + page);
+            // console.log("选择的页：" + page);
 
         },
 
@@ -109,7 +109,7 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
             //     this.temp[item.Name] = item;
             // }.bind(this));
             // console.log(Object.keys(this.temp));
-            this.pages = Math.ceil(this.workers.length / this.pageSize);
+            this.pages = Math.ceil(this.workers.length/this.pageSize);
             this.newPages = this.pages > 5 ? 5 : this.pages;
             this.getpageList();
             this.selPage = 1;
@@ -122,16 +122,12 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
         //封装一个实现弹出框出现或者隐藏的函数
         modal:function(){
             $('#ye')
-            .modal({closable:false,onHidden:function(){
-               $("#yeCtrl").append($("#ye"));
-               $('.modals #ye').remove();
-            }})
-            .modal("toggle");
+            .modal("hide");
         },    
         add: function () {
             this.state = "add";
             this.info = {};
-            this.modal();
+            // this.modal();
 
         },
 
@@ -139,10 +135,14 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
             this.index = $index;
             this.state = "modfiy";
             this.info = angular.copy(this.items[$index]);
-            this.modal();
+            // this.modal();
         },
 
         save: function () {
+            if( this.state == 'add'){
+                this.info.id = new Date().getTime();
+            } 
+
             this.state == 'add' ? this.workers.push(this.info) : this.items[this.index] = this.info;
             $.each(this.workers,function(i,item){
                 if(item.id==this.info.id){
@@ -151,6 +151,7 @@ app.register.controller("yeCtrl", function ($scope, $http, $filter) {
                     return false;
                 } 
             }.bind(this));
+            this.dealSearchData(this.workers);
             // $scope.$apply();
             // this.state == 'add' ? this.workers.push(this.info) : this.items[this.index] = this.info;
             this.modal();

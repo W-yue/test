@@ -68,8 +68,24 @@ app.config(function($stateProvider,$controllerProvider){
            }
         }
     }
+
+    $stateProvider.state("workers.modalShow",{
+        url:"/modal/:workers",
+        templateUrl:function(opt){
+           return opt.workers+'.html';
+        },
+
+        controller:function($scope,$state){
+            $('.modals').remove();
+            $("#ye").modal({closable:false,onHidden:function(){
+               //$("#yeCtrl").append($("#ye"));
+               $state.go("workers");
+                
+            }}).modal("show");
+        }
+    })
     // 用$stateProvider配置块注册三个状态，因为$stateProvider是一个Angular Provider，所以必须使用AngularJS依赖注入将它注入到一个.config()块中
     $stateProvider.state(one);
     $stateProvider.state(two);
-    $stateProvider.state(three);
+    $stateProvider.state("workers",three);
 });
