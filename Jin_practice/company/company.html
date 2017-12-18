@@ -1,0 +1,125 @@
+
+
+<div ng-controller="taoCtrl">
+    <div class="ui icon input">
+        <input type="text" placeholder="Search..." ng-model="test">
+        <i ng-show="search" class="search link icon"></i>
+        <i ng-show="!search" ng-click="controller.remove()" class="remove link icon"></i>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>
+                    <span class="pointer" ng-click="controller.sortList('country')">国家
+                        <i class="sort icon" ng-class="{ascending: !controller.desc && controller.sort=='country',
+                        descending: controller.desc && controller.sort=='country'}"></i>
+                    </span>
+                </th>
+                <th>
+                    <span class="pointer" ng-click="controller.sortList('name')">公司
+                        <i class="sort icon" ng-class="{ascending: !controller.desc && controller.sort=='name',
+                        descending: controller.desc && controller.sort=='name'}"></i>
+                    </span>
+                </th>
+                <th>
+                    <span class="pointer" ng-click="controller.sortList('address')">地址
+                        <i class="sort icon" ng-class="{ascending: !controller.desc && controller.sort=='address',
+                        descending: controller.desc && controller.sort=='address'}"></i>
+                    </span>
+                </th>
+                <th>
+                    <span class="pointer" ng-click="controller.sortList('email')">邮箱
+                        <i class="sort icon" ng-class="{ascending: !controller.desc && controller.sort=='email',
+                        descending: controller.desc && controller.sort=='email'}"></i>
+                    </span>
+                </th>
+                <th>
+                    <span class="pointer" ng-click="controller.sortList('tel')">电话
+                        <i class="sort icon" ng-class="{ascending: !controller.desc && controller.sort=='tel',
+                        descending: controller.desc && controller.sort=='tel'}"></i>
+                    </span>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in companies | filter:test | orderBy:controller.sort:controller.desc">
+                <td ng-bind-html="x.country | highlight:test | html"></td>
+                <td ng-bind-html="x.name | highlight:test | html"></td>
+                <td ng-bind-html="x.address | highlight:test | html"></td>
+                <td ng-bind-html="x.email | highlight:test | html"></td>
+                <td ng-bind-html="x.tel | highlight:test | html"></td>
+                <td>
+                    <button class="ui inverted blue button" ng-click="controller.update($index)">修改</button>
+                    <button class="ui inverted red button" ng-click="controller.del($index)">删除</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="full-width">
+            <tr>
+                <th></th>
+                <th colspan="5">
+                    <div class="ui right floated small primary labeled icon button" ng-click="controller.add()">
+                        <i class="plus icon"></i>添加公司
+                    </div>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div id="modal-1" class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            {{ controller.state }}
+        </div>
+        <div class="content">
+            <div class="description">
+                <form class="ui form" name="myForm">
+                    <div class="field">
+                        <label>国家及公司名</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <div class="field">
+                                    <select ng-model="info.country" name="country" class="ui fluid dropdown">
+                                        <option value="">所属国家</option>
+                                        <option value="中国">中国</option>
+                                        <option value="美国">美国</option>
+                                        <option value="日本">日本</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <input type="text" ng-model="info.name" name="name" placeholder="公司名" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>地址</label>
+                        <input type="text" ng-model="info.address" name="address" placeholder="地址">
+                    </div>
+                    <div class="field">
+                        <label>联系方式</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="email" name="email" ng-model="info.email" placeholder="邮箱">
+                                <span ng-show="myForm.email.$invalid" style="color:red">非法的邮箱！</span>
+                            </div>
+                            <div class="field">
+                                <input type="text" name="tel" ng-model="info.tel" placeholder="电话">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="ui black deny button" data-dismiss="modal">
+                取消
+            </button>
+            <button ng-disabled="myForm.name.$error.required" class="ui positive right labeled icon button" ng-click="controller.save()">
+                确认并保存
+                <i class="checkmark icon"></i>
+            </button>
+        </div>
+    </div>
+</div>

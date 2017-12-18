@@ -1,8 +1,0 @@
-
-{
-    "department":[
-        {"Num":"01","Name":"产品部","Person":"Bob","All":"100"},
-        {"Num":"02","Name":"销售部","Person":"Mary","All":"150"},
-        {"Num":"03","Name":"研发部","Person":"Dviad","All":"256"}
-    ]
-}

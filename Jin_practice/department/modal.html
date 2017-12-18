@@ -1,0 +1,30 @@
+<!-- 信息弹出框 -->
+<div class="ui modal" id="info" style="padding:10px 100px">
+    <i class="close icon"></i>
+    <div class="header">部门信息</div>
+    <div class="ui form description field" name="myForm" novalidate>
+        <br>           
+        <div class="field">
+            <label>部门编号</label>
+            <input type="text" ng-model="controller.info.Num" placeholder="Department Number" name="num">
+        </div>                
+        <div class="field">
+              <label>部门名称</label>
+            <input type="text" ng-model="controller.info.Name" placeholder="Department Name" name="name">
+        </div>
+        <div class="field">
+            <label>负责人</label>
+            <input type="text" ng-model="controller.info.Person" placeholder="Department Person" name="person">
+        </div>
+        <div class="field">
+            <label>员工数</label>
+            <input type="text" ng-model="controller.info.All" placeholder="Department All" name="all">
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">取消</div>
+        <div class="ui right labeled icon button" ng-click="controller.save()">保存
+            <i class="checkmark icon"></i>
+        </div>          
+    </div>
+</div>

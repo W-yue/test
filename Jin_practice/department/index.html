@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../js/Semantic/semantic.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../company/css/company.css">
+    <title>Document</title>
+</head>
+
+<body ng-app="myApp"> 
+    <div class="flex-container">
+        <!-- 导航栏 -->
+        <nav class="flex-item-top">
+            <img src="./images/logo10-small.jpg" alt="">
+            <div class="ui icon left top pointing dropdown">
+                <i class="user icon"></i>用户
+                <div class="menu">
+                    <div class="item">登录</div>
+                    <div class="item">注册</div>
+                </div>
+            </div>
+            <div class="ui icon right top pointing dropdown">
+                <i class="pause icon"></i>退出
+                <div class="menu">
+                    <div class="item">切换账号</div>
+                    <div class="item">退出当前用户</div>
+                </div>
+            </div>
+        </nav>
+        <!-- 中部 -->
+        <div class="flex-item-center">
+            <!-- 侧边栏 -->
+            <aside  class="flex-item-left" id="aside">
+                <div class="div">
+                    <i class="block layout icon"></i>&nbsp;&nbsp;公司
+                    <i class="angle right icon"></i>
+                </div>
+                <ul>
+                    <li ui-sref="111" ui-sref-active="active">公司首页</li>
+                    <li ui-sref="two" ui-sref-active="active">部门信息</li>
+                    <li ui-sref="workers" ui-sref-active="active">员工信息</li>
+                </ul>
+            </aside>
+             <!-- 内容  -->
+            <article  class="flex-item-right">
+                <div ui-view style="padding:0 10%;" style="color:red;"><h1>首页页面</h1></div>
+            </article>
+        </div>
+        <!-- 页尾 -->
+        <footer  class="flex-item-bottom">
+            <span>四川省成都市高新区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jinhong.wu@colasoft.com.cn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;123-4567-8901</span>
+        </footer>  
+    </div>
+    <script src="../js/angular.js"></script> 
+    <script src="https://cdn.bootcss.com/script.js/2.5.8/script.min.js"></script>
+    <script src="../js/angular-ui-router.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="../js/Semantic/semantic.min.js"></script>
+    <script src="./js/router.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="../company/js/companyCtrl.js"></script>
+</body>
+</html>

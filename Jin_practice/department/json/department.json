@@ -1,0 +1,10 @@
+
+{
+    "department":[
+        {"Num":"123","Name":"产品部","Person":"Bob","All":"100"},
+        {"Num":"12","Name":"销售部","Person":"Mary","All":"150"},
+        {"Num":"43","Name":"研发部","Person":"Dviad","All":"256"},
+        {"Num":"64","Name":"销售部","Person":"Pig","All":"642"},
+        {"Num":"09","Name":"产品部","Person":"Zero","All":"842"}       
+    ]
+}
