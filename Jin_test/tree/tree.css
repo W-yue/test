@@ -1,0 +1,65 @@
+
+.csf-tree{
+    list-style: none;
+    padding-left:20px;
+}
+.csf-tree .color-indictor{
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom:2px;
+    padding: 0px 3px;
+}
+.csf-tree .disabled{
+    color: grey;
+}
+.csf-tree>li{
+    margin-top:8px;
+}
+/* leaf-node:下面没有子元素   */
+/* unexpand-node：没有点击的三角符号 */
+/* expand-node：点击后的三角符号 */
+.csf-tree .color-indictor.unexpand-node,
+.csf-tree .color-indictor.leaf-node{   
+    width: 0; 
+    height: 0; 
+    border-top: 4px solid transparent; 
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid black; 
+}
+.csf-tree .color-indictor.leaf-node{
+     visibility: hidden; 
+}
+.csf-tree .color-indictor.expand-node{
+    transform-origin:3px 50%; 
+    transform: rotate(90deg);
+}
+/* 复选框 */
+.csf-tree .ui.checkbox>label{
+    cursor: pointer;
+}
+.csf-tree .ui.checkbox input~.box:before,
+.csf-tree .ui.checkbox input~label:before{
+    border-radius: 0px;
+    width: 14px;
+    height: 14px;
+    top: 1px;
+}
+.csf-tree .ui.checkbox input:checked~.box:before,
+.csf-tree .ui.checkbox input:checked~label:before {
+    border: 1px solid rgb(61,115,243);
+    background: rgb(61,115,243) !important;
+}
+.csf-tree .ui.checkbox input:checked~.box:after, 
+.csf-tree .ui.checkbox input:checked~label:after {
+    content: ''; 
+    border: 2px solid #fff; 
+    border-top-width: 0;
+    border-right-width: 0; 
+    width: 9px;
+    height: 5px;
+    transform: rotate(-50deg);
+    top: 4px;
+    left: 3px;
+}
+
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/layuiAnim.css">
+    <title>Layui-Anim</title>
+</head>
+<body>
+    <h1 class="my-h1">CSS3动画类</h1>
+    <p class="my-div-content">在实用价值的前提之下，我们并没有内置过多花俏的动画。而他们同样在 layui 的许多交互元素中，发挥着重要的作用。layui 的动画全部采用 CSS3，因此不支持ie8和部分不支持ie9（即ie8/9无动画）</p>
+    
+    <!-- 使用方式 -->
+    <fieldset class="my-div-block">
+        <legend><a>使用方式</a></legend>
+    </fieldset>
+    <p class="my-div-explain">动画的使用非常简单，直接对元素赋值动画特定的 class 类名即可。如：</p>
+    <!-- 代码块 -->
+    <!-- <pre class="my-code">   
+            <p>code <a href="">layui.code</a></p>
+            <ol id="ol">
+                <li>其中 layui-anim 是必须的，后面跟着的即是不同的动画类</li>
+                <li><div class="layui-anim layui-anim-up"></div></li>
+                <li></li>
+                <li>循环动画，追加：layui-anim-loop</li>
+                <li><div class="layui-anim layui-anim-up layui-anim-loop"></div></li>
+                <li><span></span></li>
+            </ol>    
+        </pre> -->
+    <pre class="layui-code" lay-encode="true">
+其中 layui-anim 是必须的，后面跟着的即是不同的动画类
+<div class="layui-anim layui-anim-up"></div>
+ 
+循环动画，追加：layui-anim-loop
+<div class="layui-anim layui-anim-up layui-anim-loop"></div>  
+    </pre>
+    
+
+    <!-- 内置CSS3动画一览表 -->
+    <fieldset class="my-div-block">
+        <legend>
+            <a>内置CSS3动画一览表</a>
+        </legend>
+    </fieldset>
+    <p class="my-div-explain">下面是不同的动画类名，数量可能有点少的样子？但正如开头所讲的，拒绝冗余花俏，拥抱精简实用。
+        <i>点击下述绿色块，可直接预览动画</i>
+    </p>
+
+    <table>
+        <tr>
+            <td><div class="my-anim" id="up" onclick="myanimate('up','my-anim-up')">从最底部往上滑入</div><span>layui-anim-up</span></td>
+            <td><div class="my-anim" id="upbit" onclick="myanimate('upbit','my-anim-upbit')">微微往上滑入</div><span>layui-anim-upbit</span></td>
+            <td><div class="my-anim" id="scale" onclick="myanimate('scale','my-anim-scale')">平滑放大</div><span>layui-anim-scale</span></td>
+            <td><div class="my-anim" id="scaleSpring" onclick="myanimate('scaleSpring','my-anim-scaleSpring')">弹簧式放大</div><span>layui-anim-scaleSpring</span></td>
+        </tr>
+        <tr>
+            <td><div class="my-anim" id="fadein" onclick="myanimate('fadein','my-anim-fadein')">渐现</div><span>layui-anim-fadein</span></td>
+            <td><div class="my-anim" id="fadeout" onclick="myanimate('fadeout','my-anim-fadeout')">渐隐</div><span>layui-anim-fadeout</span></td>
+            <td><div class="my-anim" id="rotate" onclick="myanimate('rotate','my-anim-rotate')">360度旋转</div><span>layui-anim-rotate</span></td>
+            <td><div class="my-anim" id="loop">循环动画</div><span>追加：layui-anim-loop</span></td>
+        </tr>
+    </table>
+
+    <!-- 结语 -->
+    <fieldset class="my-div-block">
+        <legend><a>结语</a></legend>     
+    </fieldset>
+    <p class="my-div-explain">物不在多，有用则精。</p>
+    <p class="my-div-content">Layui - 用心与你沟通</p>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="./layui/layui.js"></script>
+    <script>
+        layui.use('code', function(){ //加载code模块
+            layui.code(); //引用code方法
+        });
+
+        //判断浏览器类型
+        function getExplorerInfo() {
+            var explorer = window.navigator.userAgent.toLowerCase();
+            //ie ,ie8及之前的版本不支持addEventListener()方法
+            if (explorer.indexOf("msie") >= 0) {
+                var ver = explorer.match(/msie ([\d.]+)/)[1];
+                return "animationend";
+            }
+            //firefox 
+            else if (explorer.indexOf("firefox") >= 0) {
+                var ver = explorer.match(/firefox\/([\d.]+)/)[1];
+                return "animationend";
+            }
+            //Chrome
+            else if (explorer.indexOf("chrome") >= 0) {
+                var ver = explorer.match(/chrome\/([\d.]+)/)[1];
+                return "webkitAnimationEnd" ;
+            }
+            //Opera
+            else if (explorer.indexOf("opera") >= 0) {
+                var ver = explorer.match(/opera.([\d.]+)/)[1];
+                return "webkitAnimationEnd" ;
+            }
+            //Safari
+            else if (explorer.indexOf("Safari") >= 0) {
+                var ver = explorer.match(/version\/([\d.]+)/)[1];
+                return "webkitAnimationEnd" ;
+            }
+        }
+        var explorerinfo = getExplorerInfo();
+        // 动画
+        function myanimate(id,myclass){
+            $("#"+id).addClass(myclass);
+            //off()关闭次数,因为animationend只会在动画完成后执行一次
+            $("#"+id).off().on(explorerinfo,function(){
+                $("#"+id).removeClass(myclass);
+            })
+        };
+        // 无限旋转
+        $("#loop").click(function(){
+            $(this).toggleClass("my-anim-loop");
+        });
+
+        // 代码显示
+        // $("#ol li").not(":last").each(function (index) {
+        //     var txt = $(this).html();
+        //     if (txt) {
+        //         txt = txt.replace(/</g, "&lt;");
+        //         txt = txt.replace(/>/g, "&gt;");
+        //         $(this).html(txt);
+        //     }
+        // });       
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的DOM -->
+    <div id="main" style="width:600px; height:400px;"></div>
+
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="./js/echarts.js"></script>
+    <script>
+        //基于准备好的DOM，初始化echarts实例
+        var myChart = echarts.init(document.getElementById("main"));
+
+        //指定图表的配置项和数据
+        myChart.setOption({
+            animation:false,//是否开启动画
+            title:{
+                text:"异步数据加载"
+            },
+            series:[{
+                name:"销量",
+                type:"bar", //柱形图
+                data:[]
+            }],
+            tooltip:{},
+            legend:{    //图例,可点击图例控制哪些不显示
+                data:["销量"]
+            },
+            xAxis:{
+                data:[]
+            },
+            yAxis:{ },
+            dataZoom:[ //默认控制x轴
+                {
+                    type:"slider",//silder型dataZoom组件
+                    start:0,//左边在10%的位置
+                    end:20 //右边在60%的位置
+                },
+                {
+                    type:"inside",//inside型dataZoom组件
+                    start:0,
+                    end:20 
+                }
+            ]
+        });
+        //异步加载数据
+        $.get("/Jin_practice/json/data.json").done(function(data){
+            //填入数据
+            myChart.setOption({
+                xAxis:{
+                    data:data.categories
+                },
+                series:[{
+                    //根据名字对应到相应的系列
+                    name:"销量",
+                    data:data.data
+                }]
+            })
+        });
+        
+    </script>
+</body>
+</html>

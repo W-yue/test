@@ -1,25 +1,26 @@
 
-<div  ng-controller="myCtrl">
+<div ng-controller="myCtrl">
     <div>
-        <!-- 关键字查询 -->  
-        <div class="ui icon input" width:"400px">
-            <input type="text" ng-model="controller.keyword" ng-keydown="controller.search($event)" placeholder="请输入关键字...">
-            <i class="search icon"></i>
-        </div>
+         <!-- 关键字查询 --> 
+        <div class="ui icon right floated input" style="width:176px;">
+                <input type="text" ng-model="controller.keyword" ng-keydown="controller.search($event)" placeholder="请输入关键字...">
+                <i class="search icon"></i>
+            </div>
         <!-- 增加信息 -->
-        <button class="ui circular icon button" ui-sref="two.modalShow({department:'modal'})" ng-click="controller.add()" >
+        <button class="ui icon positive button" style="height:38px; margin-bottom:10px;" ui-sref="two.modalShow({department:'modal'})" ng-click="controller.add()" >
             <i class="plus icon"></i>
         </button>
-        <br>
+        
+        
         <!-- 表格信息 -->
-        <table class="ui single line table">
+        <table class="ui celled table" style="width:1200px;">
             <thead>
                 <tr>
-                    <th class="center aligned">部门编号</th>
-                    <th class="center aligned">部门名称</th>
-                    <th class="center aligned">负责人</th>
-                    <th class="center aligned">员工数</th>
-                    <th class="center aligned" width:"370px"></th>
+                    <th class="center aligned" style="width:200px;">部门编号</th>
+                    <th class="center aligned" style="width:200px;">部门名称</th>
+                    <th class="center aligned" style="width:200px;">负责人</th>
+                    <th class="center aligned" style="width:200px;">员工数</th>
+                    <th class="center aligned" style="width:200px;"></th>
                 </tr>
             </thead>
             <tbody>

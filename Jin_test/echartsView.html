@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ECharts 页面</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        /* 导航栏 */
+        .nav{
+            width: 100%;
+            height: 50px;
+            /* border-top: 3px solid rgb(169,51,76); */
+            background-color: rgb(41, 60, 85);
+            position: relative;
+        }
+        .nav .logo{
+            width: 150px;
+            height: 36px;
+            margin: 7px 16px;
+        }
+        .nav .ulLeft,
+        .nav .ulRight{
+            height: 50px;
+            color: rgba(148, 147, 147,0.7);
+            list-style: none;
+            position: absolute;
+            top: 0;
+        }
+        .nav .ulLeft{
+            left: 200px;
+        }
+        .nav .ulRight{
+            right: 0px;
+        }
+        .nav .ulLeft li,
+        .nav .ulRight li{
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            float: left;
+        }
+        .nav .ulLeft li{
+            padding:0 16px;
+        }
+        .nav .ulRight li{
+            padding:0 16px;
+        }
+        .nav .ulLeft li:hover,
+        .nav .ulRight li:hover{
+            color: white;
+            background-color: rgba(26, 24, 24,0.5); 
+        }
+        .nav .ulRight li .githubImg{
+            width: 16px;
+            height: 16px;
+            margin-top:17px;
+        }
+        /* 侧边栏 */
+        .content .leftAside{
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            border-right:1px solid rgb(196, 196, 196);
+        }
+        .content .leftAside .ulChoose{
+            width: 270px;
+            height: 47px;
+            list-style: none;
+            margin: 0 auto;
+            border-bottom: 1px solid rgb(214, 214, 214);
+        }
+        .content .leftAside .ulChoose li{
+            float: left;
+            padding: 14px 2px;
+            margin: 0 17px;
+            color: rgb(85,85,85);
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .content .leftAside .inputAfter{
+            margin-bottom: 20px;
+        }
+        .content .leftAside .ulChoose li:hover{
+            background-color: rgb(233, 233, 233);
+        }
+        .content .leftAside .inputAfter .input{
+            width: 250px;
+            height: 28px;
+            display: block;
+            margin: 16px auto 6px;
+            border: 1px solid rgb(151,155,178);
+            border-radius: 4px;
+        }
+        .content .leftAside .inputAfter .descrip{
+            font-size: 12px;
+            color: rgb(85,85,85);
+            padding-left:50px;
+        }
+        .content .leftAside .inputAfter .descrip span:first-child{
+            margin-right:16px;
+        }
+        .content .leftAside .inputAfter .descrip span:last-child{
+            margin-left:74px;
+        }
+        .content .leftAside .divAside{
+            height: auto;
+            overflow: auto;
+        }
+        .content .leftAside .divAside ul{
+            list-style: none;
+            color: rgb(70, 68, 68);            
+            font-size: 14px;
+        }
+        .content .leftAside .divAside ul li{
+            margin-left: 4px;
+            padding: 6px 12px;
+        }
+        .content .leftAside .divAside ul li:hover{
+            background-color: rgb(232,202,212);
+        }
+        .content .leftAside .divAside ul li:active{
+            color: white;
+            background-color: rgb(176,58,91);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <img src="./images/logo.png" class="logo">
+        <ul class="ulLeft">
+            <li>首页</li>
+            <li>文档</li>
+            <li>下载</li>
+            <li>实例</li>
+            <li>社区</li>
+            <li>工具</li>
+            <li>关于</li>
+        </ul>
+        <ul class="ulRight">
+            <li><img src="./images/github.png" class="githubImg"></li>
+            <li>2.0</li>
+            <li>EN</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="leftAside">
+            <ul class="ulChoose">
+                <li>教程</li>
+                <li>API</li>
+                <li>配置项</li>
+                <li>GL</li>
+            </ul>
+            <div class="inputAfter">
+                <input type="text" class="input">
+                <div class="descrip">
+                    <span>教程搜索</span>
+                    <span>全文搜索</span>
+                    <span>折叠</span>
+                </div>
+            </div>
+            <div class="divAside">
+                <ul>
+                    <li>5 分钟上手 ECharts</li>
+                    <li>自定义构建 ECharts</li>
+                    <li>在 webpack 中使用 ECharts</li>
+                    <li>个性化图表的样式</li>
+                    <li>样式综述</li>
+                    <li>异步数据加载和更新</li>
+                    <li>在图表中加入交互组件</li>
+                    <li>移动端自适应</li>
+                    <li>数据的视觉映射</li>
+                    <li>ECharts 中的事件和行为</li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightExplain">
+
+        </div>
+    </div>
+</body>
+</html>

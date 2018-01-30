@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./tree.js"></script>
+    <link rel="stylesheet" href="../js/Semantic/semantic.min.css">
+    <link rel="stylesheet" href="./tree.css">    
+    <title>Document</title>
+</head>
+<body ng-app="treeApp" ng-controller="treeController">
+    <tree-view tree-data="jsonData"></tree-view>
+    <button class="ui button" ng-click="i=jsonData.getCheckedNode()">点击</button>
+    <p>{{i}}</p>
+</body>
+</html>
+
+
+
+

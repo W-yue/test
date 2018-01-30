@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+a,li{
+    cursor: pointer;
+}
 .flex-container{
     display:-webkit-box;  
     -webkit-box-orient:vertical;
@@ -10,14 +13,14 @@
 }
 .flex-item-center{
     -webkit-box-flex:1;   
-    -webkit-flex:1;  
+    /* -webkit-flex:1;   */
     flex:1;  
     display:-webkit-box;  
 }
 /* 内容 */
 .flex-item-right{
     width:1660px;
-    padding: 100px 0px;
+    padding: 120px 50px;
     overflow: auto;
 }
 /* 导航栏 */
@@ -35,15 +38,16 @@ nav img{
 nav .top{
     position: absolute;
     top: 10px;
-    left:1760px;
+    left:1790px;
     margin-left: 10px;
 }
 /* 侧边栏 */
-.flex-item-left{
+/* .flex-item-left{
     overflow:auto;   
     -webkit-overflow-scrolling:touch;
-}
+} */
 aside{
+    overflow:auto;
     width: 270px; 
     color: rgb(184, 179, 179);  
     background: linear-gradient(to left,rgb(25, 21, 73),rgb(23,17,53));
@@ -55,6 +59,7 @@ aside::-webkit-scrollbar-thumb{
     background: rgb(106, 111, 124);
 }
 aside .div{
+    margin-top: 50px;
     width: 100%;
     background: rgb(21,14,55);
     padding: 10px 20px;
@@ -68,8 +73,6 @@ aside .div .angle{
 }
 aside ul{
     width: 100%;
-    /* height: 0px; */
-    /* overflow: hidden; */
     background: rgb(77, 76, 121);
     border-bottom: 1px solid rgb(59, 50, 104);
 }
@@ -92,14 +95,34 @@ footer{
     background: linear-gradient(to top,rgb(44, 39, 85),rgb(26, 20, 56));
     text-align: center;
     line-height: 30px;
+    color: white;
 }
 /* 三角形 */
-.triangle-left {
+.triangleleft {
     border-top: 15px solid transparent;
     border-right: 16px solid white;
     border-bottom: 14px solid transparent;
     position: absolute;
     left: 254px;
 }
+
+
+/* 弹出框警告语 */
+.required{
+    position: relative;
+}
+.warning{
+    position: absolute;
+    top: 0;
+    margin-left:70px; 
+    color:red; 
+    font-size:10px;
+}
+.required .ng-invalid{
+    color: rgba(255, 0, 0, 0.692) !important;
+    background: rgba(230, 24, 24, 0.137) !important;
+}
+
+
 
 

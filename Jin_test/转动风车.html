@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 200px 200px;
+        }
+        .div1{           
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 40px;
+            left: 74px;
+            background: linear-gradient(45deg,rgb(81, 255, 0) 50%,white 50%);
+            background-size:50px 50px;
+            transform: rotate(45deg);
+        }
+        .div2{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 110px;
+            left: 74px;
+            background: linear-gradient(45deg,rgb(12, 180, 247) 50%,white 50%);
+            background-size:50px 50px;
+            transform: rotate(225deg);
+        }
+        .div3{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 75px;
+            left: 110px;
+            background: linear-gradient(45deg,rgb(95, 88, 190) 50%,white 50%);
+            background-size:50px 50px;
+            transform: rotate(135deg);
+        }
+        .div4{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 75px;
+            left: 38px;
+            background: linear-gradient(45deg,rgb(245, 101, 5) 50%,white 50%);
+            background-size:50px 50px;
+            transform: rotate(315deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+        <div class="div4"></div>
+    </div>
+    <script>
+        var i = 0;
+        setInterval(function(){
+            i=i+10;
+            $("#div").css("transform","rotate("+i+"deg)");  
+        },100);
+    </script>
+</body>
+</html>

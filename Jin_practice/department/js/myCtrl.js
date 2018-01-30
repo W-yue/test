@@ -1,15 +1,14 @@
 app.register.controller("myCtrl", function ($scope, $http,$filter,$compile) {
-
     // $scope.hello = "Hello modal";
     // $http.get("test.html").success(function(data){ //直接用jQuery原生代码ajax请求，但是这样不能识别Angularjs里面的指令，所以后面要配置Angularjs指令
     //     //console.log(data);
     //     var div = $("<div class='mymodal'></div>");//直接在index页面创建一个div来装加载的modal页面   
     //     div.html(data);//将请求到的数据装进div里面
     //     div.appendTo($("body"));
-    //     $compile($(".mymodal"))($scope); //配置Angularjs指令
-         
+    //     $compile($(".mymodal"))($scope); //配置Angularjs指令    
     // })
         //$compile($("#modal").contents())($scope);     //$("#modal").contents()获取id为modal里面的所有内容
+
         $scope.controller = {
             //flag:false,
             list:[],
@@ -58,14 +57,12 @@ app.register.controller("myCtrl", function ($scope, $http,$filter,$compile) {
             //添加
             add:function(){
                 this.info = null;
-                this.index = null;
-                //this.modal();      
+                this.index = null;    
             },
             //修改
             modify:function($index){
                 this.index = $index;
                 this.info = angular.copy(this.list[this.index]);
-                //this.modal();
             },
             //删除
             delete: function ($index) {
@@ -76,30 +73,33 @@ app.register.controller("myCtrl", function ($scope, $http,$filter,$compile) {
                 this.index = null;
             },
             //保存
-            save: function () {
+            save: function (flag ) {
+                if(flag){  //验证不合法为true时，return false。
+                    confirm("请输入合法的完整信息！");
+                    return false;
+                }
+                var count = 0;
+                for (x in this.info) {
+                    count++;
+                }
                 if (this.index == null) {
                     //新增信息   
-                    //判断是否填入完整  
-                    var count = 0;
-                    for (x in this.info) {
-                        count++;
-                    }
+                    //判断是否填入完整                    
                     if (count == 4) {
                         this.list.push(this.info);
                         this.info = null;
                         this.modal();
                     }else{
-                        confirm("请输入完整信息！");
+                        confirm("信息列表不能有空！");
                     }
                     count = 0;
-                } else {
+                } else {                   
                     //修改信息         
-                    this.list[this.index] = this.info;
-                    this.info = null;
-                    this.index = null;
-                    this.modal();
+                        this.list[this.index] = this.info;
+                        this.info = null;
+                        this.index = null;
+                        this.modal();                 
                 }
-                // $location.url('/two'); 
             }
         }
         $scope.controller.get();
@@ -108,4 +108,5 @@ app.register.controller("myCtrl", function ($scope, $http,$filter,$compile) {
     //         $scope.search=$scope.keyword;
     //    }) 
     
-    });
+});
+

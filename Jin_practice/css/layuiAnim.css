@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    cursor: pointer;
+}
+.my-h1,.my-div-content,.my-div-block,.my-div-explain,table{
+    font-size: 14px;
+}
+.my-h1{
+    color: #393D49;
+    border-bottom: 1px solid #eee;  
+    font-size: 28px; 
+    font-weight: 300;
+    padding: 10px;
+    line-height: 60px;
+    margin-bottom: 20px;
+}
+.my-div-content{
+    background: rgb(242, 242, 242);
+    padding: 20px 20px;
+    border-left: 6px solid rgb(0, 150, 136);
+}
+
+/* fieldset */
+.my-div-block{
+    margin: 30px 0 20px;
+    border: none; 
+    padding: 0; 
+    border-top: 1px solid #eee;
+}
+.my-div-block legend {
+    color: #393D49;
+    margin-left: 20px;  
+    padding: 0 10px; 
+    font-size: 22px; 
+    font-weight: 300;
+}
+.my-div-explain{
+    font-size: 14px;
+    margin: 14px 0;
+}
+.my-div-explain i{
+    color: rgb(102,102,102);
+}
+
+/* 代码块 */
+/* .my-code {
+    border: 1px solid #ddd;
+    border-left-width: 6px;
+    background-color: rgb(242,242,242);
+    color: #333;
+    font-size: 12px;
+    font-family: Courier New;
+}
+.my-code p{
+    height:30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd; 
+}
+.my-code p a{
+    float: right;
+    text-decoration: none;
+    color: rgb(153,153,153);
+}
+.my-code ol{
+    margin-left: 44px;
+    list-style-type: decimal-leading-zero;
+    background: white;
+}
+.my-code ol li{
+    margin-bottom: 6px ;
+    text-indent: 6px;
+}
+.my-code li:last-child{
+    margin: 0;
+} */
+
+/* 动画一览表 */
+table{
+    text-align: center;
+    border-collapse:collapse;
+    margin-bottom: 60px;
+}
+table,tr,td{
+    padding: 20px 0;
+    border: 1px solid rgb(226,226,226);
+}
+
+table td:hover{
+    background: rgb(242,242,242);
+}
+table .my-anim{
+    width: 150px;
+    height: 150px;
+    color: white;    
+    line-height: 150px;
+    border-radius: 75px;
+    background:rgb(0, 150, 136);
+    margin: 0 36px 10px;
+    position: relative;
+}
+table span{
+    color: rgb(102,102,102);    
+}
+
+/*从最底部往上滑入 */
+table .my-anim-up{  
+    animation: myup 0.2s;
+    -webkit-animation: myup 0.2s;
+}
+@-webkit-keyframes myup{
+    0% { opacity:.3; top:100px;}
+    100% { opacity:1; top:0px; }
+}
+/*微微往上滑入 */
+table .my-anim-upbit{  
+    animation: myupbit 0.2s;
+    -webkit-animation: myupbit 0.2s;
+}
+@-webkit-keyframes myupbit{
+    0% { opacity:.3; top:20px;}
+    100% { opacity:1; top:0px; }
+}
+ /*平滑放大 */
+table .my-anim-scale{ 
+    animation: myscale 0.2s;
+    -webkit-animation: myscale 0.2s;
+}
+@-webkit-keyframes myscale{
+    0% { opacity:.1; transform: scale(0.01);}
+    100% { opacity:1; transform: scale(1); }
+}
+/*弹簧式放大 */
+table .my-anim-scaleSpring{  
+    animation: myscaleSpring 0.3s;
+    -webkit-animation: myscaleSpring 0.3s;
+}
+@-webkit-keyframes myscaleSpring{
+    0% {  opacity:.1; transform: scale(0.6);}
+    80%{ opacity: .5; transform: scale(1.2)}
+    100% { opacity:1; transform: scale(1); }
+}
+/*渐现 */
+table .my-anim-fadein{ 
+    animation: myfadein 2s;
+    -webkit-animation: myfadein 2s;
+}
+@-webkit-keyframes myfadein{
+    0% { opacity:0;}
+    50%{ opacity:0.3;}
+    100% { opacity:1;}
+}
+/*渐隐 */
+table .my-anim-fadeout{ 
+    animation: myfadeout 2s;
+    -webkit-animation: myfadeout 2s;
+}
+@-webkit-keyframes myfadeout{
+    0% { opacity:1;}
+    50% { opacity:0;}
+    100% { opacity:0;}
+}
+/*360度旋转 */
+table .my-anim-rotate{ 
+    animation: myrotate 1s linear;
+    -webkit-animation: myrotate 1s linear;
+}
+@-webkit-keyframes myrotate{
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+/*循环动画 */
+table .my-anim-loop{ 
+    animation: myloop 1s infinite linear;
+
+    -webkit-animation: myloop 1s infinite linear;
+}
+@-webkit-keyframes myloop{
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+
+
+
+
+

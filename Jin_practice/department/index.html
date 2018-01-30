@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,15 +33,15 @@
         <!-- 中部 -->
         <div class="flex-item-center">
             <!-- 侧边栏 -->
-            <aside  class="flex-item-left" id="aside">
-                <div class="div">
+            <aside  class="flex-item-left" id="aside" ng-controller="myAside">
+                <div class="div" ng-click="myaside.fun()">
                     <i class="block layout icon"></i>&nbsp;&nbsp;公司
-                    <i class="angle right icon"></i>
+                    <i class="angle icon" ng-class="{right:!myaside.icon,down:myaside.icon}"></i>
                 </div>
                 <ul>
-                    <li ui-sref="111" ui-sref-active="active">公司首页</li>
-                    <li ui-sref="two" ui-sref-active="active">部门信息</li>
-                    <li ui-sref="workers" ui-sref-active="active">员工信息</li>
+                    <li ui-sref="111" ui-sref-active="active" ng-class="{background:url == '/111'}">公司首页<span ng-class="{triangleleft:url == '/111'}"></span></li>
+                    <li ui-sref="two" ui-sref-active="active" ng-class="{background:url == '/two'}">部门信息<span ng-class="{triangleleft:url == '/two'}"></span></li>
+                    <li ui-sref="workers" ui-sref-active="active" ng-class="{background:url == '/workers'}">员工信息<span ng-class="{triangleleft:url == '/workers'}"></span></li>
                 </ul>
             </aside>
              <!-- 内容  -->
@@ -63,6 +62,5 @@
     <script src="../js/Semantic/semantic.min.js"></script>
     <script src="./js/router.js"></script>
     <script src="./js/index.js"></script>
-    <script src="../company/js/companyCtrl.js"></script>
 </body>
 </html>

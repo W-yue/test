@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <title>Canvas</title>
+</head>
+<body>
+    <img src="logo3.jpg" width="100" height="100">
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    
+    <script>
+        var pen = $("#myCanvas")[0].getContext("2d");  //获取画笔
+        $("#myCanvas")[0].style.border = "1px solid black";
+
+        pen.strokeStyle = "red";//画笔颜色
+        //画线
+        pen.moveTo(0,0);//起点
+        pen.lineTo(100,100);//终点
+        pen.lineTo(100,150);
+        pen.closePath();//合并最后一条线的轨迹，直接从终点连接到起点
+        pen.stroke();//绘制
+        //圆
+        pen.beginPath();
+        pen.arc(200,200,40,0,2*Math.PI);//arc(x,y,r,start,stop)
+        pen.stroke();
+        //文本
+        pen.font = "30px Arial";//字体
+        pen.fillText("Hello",10,50);//实心
+        pen.strokeText("World",100,50);//空心
+        //渐变
+            //createLinearGradient(x,y,x1,y1); 创建线性渐变  
+            //createRadialGradient(x,y,r,x1,y1,r1); 创建径向/圆渐变
+        var grd = pen.createLinearGradient(0,0,200,0);//创建渐变
+        grd.addColorStop(0,"red");//addColorStop()指定颜色停止，参数使用坐标描述，可以是0至1
+        grd.addColorStop(0.4,"blue");//当我们使用渐变对象，必须有两个以上的停止颜色
+        pen.fillStyle = grd;//填充渐变
+        pen.fillRect(10,10,150,80);//(x,y,width,height)
+        //使用图像
+        var img = $("img")[0];
+        img.onload = function(){
+            pen.drawImage(img,10,10);           
+        }
+    </script>
+</body>
+</html>

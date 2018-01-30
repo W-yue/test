@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="./css/index.css">
-<!-- <div>{{title}}</div> -->
-<!-- <script src="./js/index.js"></script> -->
+
 
 <div id="yeCtrl" ng-controller="yeCtrl" ng-init="user.init()">
     <!-- 增加信息 -->
@@ -17,7 +15,10 @@
 
     <!-- 查询信息 -->
     搜索：
-    <input type="text" placeholder="请输入关键字" ng-model="user.keyword" ng-keydown="user.search($event)">
+    <div class="ui icon input">
+        <input type="text" placeholder="请输入关键字" ng-model="user.keyword" ng-keydown="user.search($event)">
+        <i class="search icon"></i>
+    </div>
     <!-- 信息展示列表 -->
     <table class="ui celled table">
         <thead>
@@ -65,9 +66,9 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr>
-                <th colspan="3">
-                    <div class="ui right floated pagination menu">
+            <tr class="center aligned">
+                <th colspan="6">
+                    <div class="ui pagination menu">
                         <a class="icon item" ng-click="user.Previous()" ng-class="{disabled:user.selPage<=1}">
                             <i class="left chevron icon"></i>
                         </a>
@@ -87,30 +88,27 @@
     </table>
 
     <!-- 增加/修改 信息弹出框-->
-    <div class="ui modal" id="ye">
+    <div class="ui modal" id="ye" style="padding:30px;">
         <i class="close icon"></i>
+        
         <form class="ui form " name="myForm" required>
             <h4 class="ui dividing header">{{user.state=='add'?'添加':'修改'}}员工信息</h4>
 
-            <div class="filed">
                 <div class="field">
-                    <div class="two fields">
-                        <div class="filed">
-                            <label>姓名：</label>
-                            <div class="field">
-                                <input ng-model="user.info.Name" type="text" name="nameInput" required>
-                            </div>
-                        </div>
+                    <div class="fields">
                         <div class="field">
+                            <label>姓名：</label>
+                            <input ng-model="user.info.Name" type="text" name="nameInput" required>
+                        </div>
+                        <div class="three wide field">
                             <label>性别</label>
                             <select class="ui search updown" ng-model="user.info.Sex" name="sexInput" required>
                                 <option value="男">男</option>
                                 <option value="女">女</option>
                             </select>
-                        </div>
+                        </div>                        
                     </div>
-                </div>
-
+                </div>         
                 <div class="filed">
                     <label>职务：</label>
                     <input ng-model="user.info.Job" type="text" name="jobInput" required>
@@ -123,7 +121,6 @@
                 </div>
                 <br/>
                 <br/>
-
                 <div class="field">
                     <label>部门</label>
                     <select class="ui search updown" ng-model="user.info.Dept" name="deptInput" required>
@@ -140,11 +137,9 @@
                 <br/>
                 <p>
                     <span ng-show="myForm.nameInput.$invalid ||myForm.jobInput.$invalid||
-                    myForm.numInput.$invalid||myForm.deptInput.$invalid||myForm.sexInput.$invalid">
+                    myForm.numInput.$invalid||myForm.deptInput.$invalid||myForm.sexInput.$invalid" style="color:red;">
                         请填写完整信息!!!</span>
                 </p>
-            </div>
         </form>
     </div>
-</div>
 </div>

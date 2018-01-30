@@ -20,7 +20,7 @@ var app = angular.module("myApp",['ui.router']);
 //     });   
 // });
 
-app.config(function($stateProvider,$controllerProvider,$filterProvider,$compileProvider,$provide){
+app.config(function($urlRouterProvider,$stateProvider,$controllerProvider,$filterProvider,$compileProvider,$provide){
     //异步加载
     app.register = {};
     app.register.controller = $controllerProvider.register;
@@ -29,11 +29,6 @@ app.config(function($stateProvider,$controllerProvider,$filterProvider,$compileP
     app.register.factory = $provide.factory;
     app.register.service = $provide.service;
 
-    // var zero = {
-    //     name:'000',
-    //     url:'/',
-    //     template:"首页页面"
-    // }
     var one = {
         name:'111',
         url:'/111',
@@ -44,6 +39,7 @@ app.config(function($stateProvider,$controllerProvider,$filterProvider,$compileP
                 $script(["/Jin_practice/company/js/companyCtrl.js"],function(){
                     defer.resolve();
                 });
+                
                 return defer.promise;
             } 
         }
@@ -65,7 +61,7 @@ app.config(function($stateProvider,$controllerProvider,$filterProvider,$compileP
     $stateProvider.state("two.modalShow",{      
         url:"/modal/:department",
         templateUrl:function(opt){    
-            return opt.department+".html";
+            return opt.department+".html"; //opt.department为modal
         },
         controller:function($scope,$state){
             $(".modals").remove();
@@ -96,3 +92,38 @@ app.config(function($stateProvider,$controllerProvider,$filterProvider,$compileP
     $stateProvider.state("two",two); //name:"two"
     $stateProvider.state("workers",three);
 });
+
+
+//侧边栏
+app.controller("myAside", function ($scope,$rootScope, $location){
+    $scope.myaside = {
+        icon:false,  
+        fun:function(){
+            this.icon = !this.icon;
+        }
+    }
+    /* 监听路由的状态变化 */
+    $rootScope.$on('$stateChangeSuccess', function() {
+        $rootScope.url = $location.path();
+    });
+    $("#aside div").each(function () {
+        if($location.path()){
+            $scope.myaside.icon = true;
+            $(this).next().slideToggle(500);
+        }
+    }); 
+})
+
+// app.run(['$rootScope', '$location', function($rootScope, $location) {
+    /* 监听路由的状态变化 */
+    // $rootScope.$on('$stateChangeSuccess', function() {
+    //     $rootScope.url = $location.path();
+    // });
+    // $("#aside div").each(function () {
+    //     if($location.path()){
+    //         $(this).next().slideToggle(500);
+    //     }
+    // });
+// }])
+
+

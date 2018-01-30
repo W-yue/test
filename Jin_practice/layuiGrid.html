@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .flex-container {
+            /* display: flex; */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            height: 100%;
+        }
+
+        .flex-item-top {
+
+        }
+
+        .flex-item-center{
+            -webkit-box-flex:1;   
+            -webkit-flex:1;  
+            flex:1;  
+            display:-webkit-box; 
+            position: relative; 
+        }
+
+        .flex-item-bottom {
+            
+        }
+
+        nav {
+            /* width: 100%; */
+            height: 60px;
+            color: white;
+            position: relative;
+            background: rgb(35, 38, 46);
+        }
+
+        nav img {
+            width: 90px;
+            height: 60%;
+            position: absolute;
+            left: 70px;
+            top: 16px;
+        }
+        nav input{
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            background: rgb(46,49,57);
+            border: 0;
+            left: 220px;
+            top: 18px;
+        }
+        nav ul{
+            width: 30%;
+            list-style: none;
+            position: absolute;
+            right: 0;
+            margin-right: 20px;
+        }
+        nav ul li{
+            width: 16.65%;
+            height: 56px;
+            line-height: 60px;
+            float: left;
+            text-align: center;
+        }
+        nav ul li:hover{
+            border-bottom: 4px solid rgb(95,184,120);
+        }
+        nav ul li select{
+
+        }
+        aside {
+            width: 220px;
+            height: 887px;
+            color: rgb(196,197,200);
+            background: rgb(57, 61, 73);
+            /* position: fixed; */
+            /* top: 60px; */
+        }
+        aside div{
+            height: 50px;
+            line-height: 50px;
+            padding-left:20px; 
+            font-size: 14px;
+            border-left: 4px solid rgb(57, 61, 73);
+        }
+        aside div:hover{
+            color: white;
+            border-left: 4px solid rgb(95,184,120);
+            background: rgb(78,84,101);
+        }
+        .left{
+            width: 46%;
+            height: 824px;
+            overflow: auto;
+            color: rgb(153,153,153);
+            background: rgb(19,21,26);
+            position:absolute;
+            font-size: 12px;
+        }
+
+        footer {
+            width: 1700px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 14px;
+            color: rgb(78, 77, 77);
+            background: rgb(189, 187, 187);
+            position: fixed; 
+            left: 220px;
+            bottom: 0; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <!-- 导航栏 -->
+        <nav class="flex-item-top">
+            <img src="./images/logo.png" alt="">
+            <input type="text" placeholder="    搜索组件或模块"> 
+            <ul>
+                <li>文档</li>
+                <li>示例</li>
+                <li>社区</li>
+                <li>周边</li>
+                <li>后台</li>
+                <li>1.x</li>
+            </ul>           
+        </nav>
+        <!-- 内容 -->
+        <div class="flex-item-center">
+            <!-- 侧边栏 -->
+            <aside>
+                <div>开发工具</div>
+                <div>布局</div>
+                <div>基本元素</div>
+                <div>组件示例</div>
+            </aside>
+            <!-- 右边 -->
+            <div>
+                <div class="left">
+                    <p>1111</p>
+                </div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <!-- 页尾 -->
+        <footer class="flex-item-bottom">© 2017 layui.com MIT license</footer>
+    </div>
+
+</body>
+
+</html>
